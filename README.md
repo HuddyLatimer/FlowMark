@@ -380,7 +380,7 @@ If you found this project helpful or learned something from it, please give it a
 
 <div align="center">
 
-**Built with ❤️ using Next.js, Supabase, and TypeScript**
+**Built using Next.js, Supabase, and TypeScript**
 
 [⬆ Back to Top](#-flowmark)
 
