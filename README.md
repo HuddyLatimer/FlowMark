@@ -17,6 +17,10 @@ A full-stack, real-time task management application built with Next.js, Supabase
 
 ---
 
+
+https://github.com/user-attachments/assets/b2302e20-d2a5-4dd2-8715-6760edfb5187
+
+
 ## ✨ Features
 
 ### 🔐 **Authentication & Security**
