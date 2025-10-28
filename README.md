@@ -6,7 +6,7 @@
 
 A full-stack, real-time task management application built with Next.js, Supabase, and TypeScript. Manage projects, collaborate with teams, and track progress with an intuitive Kanban board interface.
 
-[Live Demo](#) · [Documentation](./SETUP.md) · [Report Bug](https://github.com/HuddyLatimer/FlowMark/issues) · [Request Feature](https://github.com/HuddyLatimer/FlowMark/issues)
+[Live Demo](https://flowmark1.netlify.app/) · [Report Bug](https://github.com/HuddyLatimer/FlowMark/issues) · [Request Feature](https://github.com/HuddyLatimer/FlowMark/issues)
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -21,7 +21,7 @@ A full-stack, real-time task management application built with Next.js, Supabase
 
 ### 🔐 **Authentication & Security**
 - Email/password authentication with secure JWT tokens
-- Google OAuth integration
+- Google OAuth integration ready
 - Row-level security (RLS) for data protection
 - Protected routes with middleware
 
@@ -29,7 +29,7 @@ A full-stack, real-time task management application built with Next.js, Supabase
 - Create unlimited workspaces
 - Organize projects by team or category
 - Role-based access control (Owner/Admin/Member)
-- Invite team members via email
+- Workspace member management
 
 ### 📊 **Project Organization**
 - Multiple projects per workspace
@@ -60,7 +60,7 @@ A full-stack, real-time task management application built with Next.js, Supabase
 - Live task updates via WebSockets
 - Instant board synchronization
 - See changes as they happen
-- Activity logging
+- Activity logging system
 
 ### 📱 **Responsive Design**
 - Mobile-first approach
@@ -88,7 +88,7 @@ FlowMark combines the simplicity of Trello with the power of modern web technolo
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - npm or yarn
 - Supabase account (free tier works!)
 
@@ -111,7 +111,7 @@ Create a new project at [supabase.com](https://supabase.com), then:
 
 - Go to **SQL Editor**
 - Run the schema from `supabase/schema-fixed.sql`
-- Note your Project URL and anon key
+- Note your Project URL and anon key from **Settings → API**
 
 4. **Configure environment variables**
 
@@ -128,14 +128,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see your app! 🎉
 
-> **Detailed setup instructions:** See [SETUP.md](./SETUP.md)
-
 ---
 
 ## 🏗️ Tech Stack
 
 ### Frontend
-- **[Next.js 14](https://nextjs.org/)** - React framework with App Router
+- **[Next.js 16](https://nextjs.org/)** - React framework with App Router
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 - **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS
 - **[Lucide React](https://lucide.dev/)** - Beautiful icons
@@ -150,7 +148,6 @@ Open [http://localhost:3000](http://localhost:3000) to see your app! 🎉
 ### DevOps
 - **[Netlify](https://netlify.com/)** - Hosting & deployment
 - **Git** - Version control
-- **GitHub Actions** - CI/CD (optional)
 
 ---
 
@@ -191,30 +188,13 @@ FlowMark/
 │
 ├── supabase/                    # Database
 │   ├── schema.sql              # Original schema
-│   └── schema-fixed.sql        # Fixed RLS policies
+│   ├── schema-fixed.sql        # Fixed RLS policies
+│   └── fix-all-rls-policies.sql # RLS fix script
 │
 ├── middleware.ts                # Next.js middleware
 ├── netlify.toml                 # Netlify config
 └── package.json                 # Dependencies
 ```
-
----
-
-## 🎨 Screenshots
-
-### Landing Page
-Beautiful, modern landing page with clear call-to-action
-
-### Dashboard
-Overview of all workspaces with quick access
-
-### Kanban Board
-Intuitive drag-and-drop interface with real-time updates
-
-### Task Management
-Detailed task editing with all necessary fields
-
-> **Note:** Add screenshots to `./screenshots/` folder
 
 ---
 
@@ -246,7 +226,7 @@ FlowMark uses PostgreSQL via Supabase with the following structure:
 1. **Push to GitHub**
 ```bash
 git add .
-git commit -m "Initial commit"
+git commit -m "Your commit message"
 git push origin main
 ```
 
@@ -263,23 +243,12 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-key
 
 4. **Deploy**
 - Click "Deploy site"
-- Your app will be live at `your-site.netlify.app`
+- Your app will be live!
 
 5. **Update Supabase**
 - Add Netlify URL to Supabase redirect URLs
-- Update OAuth providers with production URL
-
-> **Detailed deployment guide:** See [DEPLOYMENT_CHECKLIST.md](./DEPLOYMENT_CHECKLIST.md)
-
----
-
-## 📖 Documentation
-
-- **[Quick Start Guide](./QUICKSTART.md)** - Get up and running in 5 minutes
-- **[Setup Guide](./SETUP.md)** - Detailed setup instructions
-- **[Architecture](./ARCHITECTURE.md)** - Technical deep dive
-- **[Deployment Checklist](./DEPLOYMENT_CHECKLIST.md)** - Production deployment
-- **[Google OAuth Setup](./GOOGLE_OAUTH_SETUP.md)** - Enable Google login
+- Go to Authentication → URL Configuration
+- Add your Netlify URL
 
 ---
 
@@ -315,14 +284,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 🐛 Known Issues
-
-- Workspace member invitations require users to have existing accounts
-- Google OAuth requires additional setup (see [GOOGLE_OAUTH_SETUP.md](./GOOGLE_OAUTH_SETUP.md))
-- Real-time updates require Supabase Realtime to be enabled
-
----
-
 ## 🎯 Roadmap
 
 ### Phase 1 - Core Features ✅
@@ -333,6 +294,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - [x] Task CRUD operations
 - [x] Real-time collaboration
 - [x] Search and filtering
+- [x] Deployed to production
 
 ### Phase 2 - Enhancements
 - [ ] Dark mode toggle
@@ -340,7 +302,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - [ ] File attachments
 - [ ] Calendar view
 - [ ] Email notifications
-- [ ] User avatars upload
+- [ ] User avatar uploads
+- [ ] Workspace member invitations
 
 ### Phase 3 - Advanced Features
 - [ ] Time tracking
@@ -387,11 +350,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Huddy Latimer**
+**Hudson Latimer**
 
 - GitHub: [@HuddyLatimer](https://github.com/HuddyLatimer)
-- Portfolio: [your-portfolio.com](#)
-- Email: [your-email@example.com](#)
+- Portfolio: [hudsonlatimer.com](https://hudsonlatimer.com)
+- Email: [hudsonlatimer4@gmail.com](mailto:hudsonlatimer4@gmail.com)
 
 ---
 
