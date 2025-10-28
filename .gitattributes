@@ -1,0 +1,27 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.tsx text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.sql text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+
+# Force language detection
+*.tsx linguist-language=TypeScript
+*.ts linguist-language=TypeScript
+*.css linguist-vendored=false
+*.sql linguist-detectable=true
+
+# Documentation
+*.md linguist-documentation=false
+
+# Exclude from language statistics
+.next/** linguist-vendored
+node_modules/** linguist-vendored
+package-lock.json linguist-generated=true
